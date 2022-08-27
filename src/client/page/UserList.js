@@ -10,7 +10,7 @@ function UserList({users,dispatch}) {
         <div>
             I am UserList
             <ul>
-                {users.map(user=>{
+                {users && Array.isArray(users) && users.map(user=>{
                     return <li key={user.id}>{user.name}</li>
                 })}
             </ul>
@@ -25,6 +25,6 @@ return store.dispatch(userAction())
 }
 
 export default {
-    component: connect(mapStateToProps)(UserList),
+    element: connect(mapStateToProps)(UserList),
     loadData
 }

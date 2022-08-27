@@ -1,29 +1,31 @@
+
 import React from "react";
 import Home from "../client/page/Home";
 import UserList from "../client/page/UserList";
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useRoutes } from 'react-router-dom'
+import NotFound from "../client/component/NotFound";
 
-function RouterFile() {
-    return (
-         <Routes>
-              {RouterConfigs.map(route=>{
-                return <Route key={route.path} path={route.path} element={<route.component/>} exact={route.exact}/>
-              })}
-          </Routes> );
-}
 
-export default RouterFile;
 export const RouterConfigs = [
     {
         path: '/',
-         ...Home,
+        element: <Home.element/> ,
+        loadData:Home.loadData,
         exact: true,
 
     },
     {
         path: '/userlist',
-        ...UserList,
+        element: <UserList.element/> ,
+        loadData:UserList.loadData,
+        exact: true,
+    },
+    {
+        path: '*',
+        element:<NotFound.element/>,
         exact: true,
     }
 ]
 
+
+export const RouterConfigsComponent = ()=>useRoutes(RouterConfigs)

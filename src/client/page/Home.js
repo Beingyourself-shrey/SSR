@@ -5,7 +5,7 @@ function Home({loggedIn,dispatch}) {
     useEffect(()=>{
         dispatch(loggedInAction())
     },[])
-    return ( <div className="shrey">My Home {loggedIn}</div> );
+    return ( <div className="shrey">My Home {JSON.stringify(loggedIn)}</div> );
 }
 const maoStateToProps =({loggedIn})=>{
     return {
@@ -16,6 +16,6 @@ const loadData=(store)=>{
     return store.dispatch(loggedInAction())
 }
 export default {
-    component: connect(maoStateToProps)(Home),
+    element: connect(maoStateToProps)(Home),
     loadData
 };

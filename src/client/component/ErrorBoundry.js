@@ -3,7 +3,7 @@ import React from "react";
 class ErrorBoundry extends React.Component {
     state = { error: false,value:"" } 
     componentDidCatch(Error,errorInfo){
-        console.log("hellpo",errorInfo);
+        console.log("I am in error boundry class",errorInfo);
         if(Error){
             this.setState({error:true,value:errorInfo})
         }

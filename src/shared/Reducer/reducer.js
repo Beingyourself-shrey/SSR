@@ -12,7 +12,7 @@ export const userReducer = (state=[],action)=>{
 export const loggedinReducer = (state="",action)=>{
     switch(action.type){
         case LOGGED_IN: 
-            return action.payload ? action.payload :'false'
+            return action.payload ? action.payload : false
          default:
             return state;
     }
